@@ -1,6 +1,6 @@
 class Wizard < Formula
   desc "Local-first autonomous data analysis agent"
-  homepage "https://wizard-aia.github.io/docs/"
+  homepage "https://wizardw2.vercel.app/"
   version "1.0.2"
   license "BSD-3-Clause"
 
