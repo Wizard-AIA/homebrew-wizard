@@ -5,21 +5,21 @@ class Wizard < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.3/Wizard-v1.0.3-darwin-arm64.zip"
-      sha256 "cf1889070646932e508d5f3822fd530486e147320b949752f84012bfdf3873de"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.4/Wizard-v1.0.4-darwin-arm64.zip"
+      sha256 "61799090cc854d6d66052c4403445ed46a3d5facbf434ae2f59c86ce5c1a93f3"
     else
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.3/Wizard-v1.0.3-darwin-amd64.zip"
-      sha256 "7d801945b51774b074ccb81d76c430f2a5d30767ff9b518605a5b5cda57afd0f"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.4/Wizard-v1.0.4-darwin-amd64.zip"
+      sha256 "ca9395d10b49f136df138dcf8a11f4f04641b57dd6e2c4a0ca139d211b1222b1"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.3/Wizard-v1.0.3-linux-arm64.zip"
-      sha256 "7be903c847687cc53b691c0d95b932bef5397f4263f295190ef554d95d24b59f"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.4/Wizard-v1.0.4-linux-arm64.zip"
+      sha256 "356891ffe6c3ec9438f2ba8f23ffd1f1f33ee9053c4735517c68ea11439e74d1"
     else
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.3/Wizard-v1.0.3-linux-amd64.zip"
-      sha256 "41b257f1f2a24b20acd67cf4620807dfe0eefc825b964d974f6f705d62f44913"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.4/Wizard-v1.0.4-linux-amd64.zip"
+      sha256 "372e732f266ab052b238383b1f57b9fd8231b7c41e9f850e13c118df1b8175d8"
     end
   end
 
