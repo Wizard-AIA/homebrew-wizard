@@ -1,7 +1,6 @@
 class Wizard < Formula
   desc "Local-first autonomous data analysis agent"
   homepage "https://wizardw2.vercel.app/"
-  version "1.0.2"
   license "BSD-3-Clause"
 
   on_macos do
@@ -41,6 +40,6 @@ class Wizard < Formula
   end
 
   test do
-    assert_match "wizard version", shell_output("#{bin}/wizard version 2>&1", 0)
+    assert_match "wizard CLI", shell_output("#{bin}/wizard version 2>&1")
   end
 end
