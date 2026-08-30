@@ -24,7 +24,7 @@ class Wizard < Formula
   end
 
   def install
-    bin.install "wizard"
+    bin.install "cli/wizard" => "wizard"
     prefix.install Dir["*"]
   end
 
