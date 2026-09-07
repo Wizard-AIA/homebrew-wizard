@@ -6,20 +6,20 @@ class Wizard < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.9/Wizard-v1.0.9-darwin-arm64.zip"
-      sha256 "02bfc8d745ea87d6604c7b816d5291d6538264cc16466094b4a56ccea9da5aa9"
+      sha256 "8217340b4188b60c457c2877c17fbafd670879b02c938e10e4e86fc9d5b1c50b"
     else
       url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.9/Wizard-v1.0.9-darwin-amd64.zip"
-      sha256 "1c797937ffd1998c89ee991da804836a6d4e4555322b79accebf512f4ba66a33"
+      sha256 "5beb1792162498c1619e8f2d7875b3b4fdf94409af937bbc4850a3ed99ec6512"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.9/Wizard-v1.0.9-linux-arm64.zip"
-      sha256 "4836e544dc3c7ac47527d307f8b6c3f65661fd97437fdd060063a9931fef3935"
+      sha256 "79e00d176618a0cfb3d47c31f7ae57b1eb2c8fa675626293ca005b1558e62e6a"
     else
       url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.9/Wizard-v1.0.9-linux-amd64.zip"
-      sha256 "d7173501edf7d29b4b3b6fcdcb3ffeb7f58bb885640e7ca77c78c0497aea6640"
+      sha256 "1574ea7f51b42a45542633c67e3a79716b716b634d7f286565d44bb3111f5949"
     end
   end
 
