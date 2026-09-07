@@ -30,6 +30,8 @@ Once installed, run:
 ```bash
 wizard init       # Checks system prerequisites and sets up local environment
 wizard start      # Launches daemon and opens the web workspace in your browser
+# `wizard init` prompts for provider, privacy mode, models, and API keys.
+# Use `wizard delete --yes` when you need to remove Wizard's local state.
 ```
 
 Open **http://localhost:3000** to begin analyzing your data.
