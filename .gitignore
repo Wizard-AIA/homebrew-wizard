@@ -3,3 +3,6 @@
 
 # npx skills lock file (local skill install state, not shared)
 skills-lock.json
+
+# Python bytecode
+__pycache__/
