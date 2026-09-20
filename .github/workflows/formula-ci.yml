@@ -1,0 +1,61 @@
+name: Formula CI
+
+# Proves Formula/wizard.rb installs and runs: its checksums equal the ones the
+# release published, brew audit passes, and `brew install` produces a working
+# `wizard` on macOS and Linux. v1.0.12 shipped a formula whose four checksums
+# were copied from a local build, so `brew install` failed on every Mac; this is
+# the check that would have caught it.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: formula-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checksums:
+    name: Checksums match the release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - name: Verifier tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Formula against the published SHA256SUMS
+        run: python3 scripts/verify_formula.py Formula/wizard.rb
+
+  install:
+    name: brew install (${{ matrix.os }})
+    needs: checksums
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - name: Audit, install, test, uninstall
+        run: |
+          set -eu
+          export HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_INSTALL_FROM_API=1 HOMEBREW_NO_ANALYTICS=1
+          if [ "$RUNNER_OS" = Linux ]; then eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"; fi
+          brew tap-new --no-git local/verify
+          cp Formula/wizard.rb "$(brew --repository local/verify)/Formula/wizard.rb"
+          brew audit --strict --formula local/verify/wizard
+          brew install --formula local/verify/wizard
+          version="$(sed -nE 's|.*/download/v([0-9]+\.[0-9]+\.[0-9]+)/.*|\1|p' Formula/wizard.rb | head -1)"
+          # Capture, then grep a here-string: a pipe into `grep -q` can fail on
+          # SIGPIPE (or on a CLI's correct nonzero exit) when a step runs with pipefail.
+          out="$(wizard --version 2>&1)"; echo "$out"
+          grep -q "v$version" <<< "$out"
+          grep -q Usage <<< "$(wizard --help 2>&1)"
+          brew test local/verify/wizard
+          brew uninstall --formula local/verify/wizard
