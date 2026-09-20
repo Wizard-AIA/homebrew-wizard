@@ -52,8 +52,10 @@ jobs:
           brew audit --strict --formula local/verify/wizard
           brew install --formula local/verify/wizard
           version="$(sed -nE 's|.*/download/v([0-9]+\.[0-9]+\.[0-9]+)/.*|\1|p' Formula/wizard.rb | head -1)"
-          wizard --version | tee version.out
-          grep -q "v$version" version.out
-          wizard --help | grep -q Usage
+          # Capture, then grep a here-string: a pipe into `grep -q` can fail on
+          # SIGPIPE (or on a CLI's correct nonzero exit) when a step runs with pipefail.
+          out="$(wizard --version 2>&1)"; echo "$out"
+          grep -q "v$version" <<< "$out"
+          grep -q Usage <<< "$(wizard --help 2>&1)"
           brew test local/verify/wizard
           brew uninstall --formula local/verify/wizard
