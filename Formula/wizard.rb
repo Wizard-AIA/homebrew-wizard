@@ -8,23 +8,23 @@ class Wizard < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.13/Wizard-v1.0.13-darwin-arm64.zip"
-      sha256 "a20731f4fef085a0551823af6e4362b2060f4b298b0f1579d3ed19967b033e4d"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.14/Wizard-v1.0.14-darwin-arm64.zip"
+      sha256 "fb0272253f06d140d57cbdccc2d90ed283a1caa03280c8f4ad29d8aa7c2538fa"
     end
     on_intel do
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.13/Wizard-v1.0.13-darwin-amd64.zip"
-      sha256 "99a717a18230c404505cfcf9011adb6c5e9dbe532430358e1d0ab6bf71995ded"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.14/Wizard-v1.0.14-darwin-amd64.zip"
+      sha256 "a104e1e93827d47e21f81297baf83fc6d14b4d00fdd91a59c8fcee06d4edb58a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.13/Wizard-v1.0.13-linux-arm64.zip"
-      sha256 "56380f882fba1ce59fdc8ec0bc2e99bf0ea1aabd702b9c78e55bc7c44e8d3b0f"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.14/Wizard-v1.0.14-linux-arm64.zip"
+      sha256 "8af5c78daa60adce5e3beaaba65443bb640fd3ea301f82dc9780223ce2534fa1"
     end
     on_intel do
-      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.13/Wizard-v1.0.13-linux-amd64.zip"
-      sha256 "028cd6077e7f36272bde48cf018b888a1de27afa30d4b428d90d925f15f5de75"
+      url "https://github.com/Wizard-AIA/Wizard-w2/releases/download/v1.0.14/Wizard-v1.0.14-linux-amd64.zip"
+      sha256 "f54b2ded978244b9dd0e920fee61f0e2c0da21bd9e667e84f1c2dff32e25687d"
     end
   end
 
